@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Character.gd" type="Script" id=1]
+[ext_resource path="res://Characters/roguelikeChar_transparent.png" type="Texture" id=2]
+
+[node name="Character" type="Node2D"]
+position = Vector2( 100, 100 )
+script = ExtResource( 1 )
+body = 271
+
+[node name="Body" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+vframes = 12
+hframes = 54
+frame = 271
