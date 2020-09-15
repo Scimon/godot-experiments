@@ -23,4 +23,3 @@ func _physics_process(delta):
 		position += move_vec.normalized() * pan_speed * delta
 		position.x = clamp(position.x, min_position.x, max_position.x)
 		position.y = clamp(position.y, min_position.y, max_position.y)
-		print(position)
