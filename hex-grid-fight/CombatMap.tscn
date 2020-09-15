@@ -61,7 +61,7 @@ tile_data = PoolIntArray( -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -6
 
 [node name="Character" parent="TileMap" instance=ExtResource( 5 )]
 position = Vector2( 62.2254, 56.1594 )
-body = 270
+body = 0
 
 [node name="CameraCentre" type="Node2D" parent="."]
 position = Vector2( 442.649, 369.11 )
