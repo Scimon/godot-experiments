@@ -4,7 +4,7 @@
 [ext_resource path="res://Tiles/dungeon-wall-corner-top-left-only.png" type="Texture" id=2]
 [ext_resource path="res://Tiles/dungeon-wall-corner-top-right-only.png" type="Texture" id=3]
 [ext_resource path="res://Tiles/white-tile-base.png" type="Texture" id=4]
-[ext_resource path="res://Character.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ComplexCharacter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Tiles/dungeon-wall-right.png" type="Texture" id=6]
 [ext_resource path="res://Tiles/dungeon-wall-horiz-only.png" type="Texture" id=7]
 [ext_resource path="res://Tiles/dungeon-wall-corner-bottom-left-only.png" type="Texture" id=8]
@@ -275,16 +275,28 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 [node name="TurnOrder" parent="." instance=ExtResource( 13 )]
 
 [node name="Chelle" parent="TurnOrder/Units" index="0" instance=ExtResource( 5 )]
-position = Vector2( 60, 58 )
-speed = 0.75
-hex_pos = Vector2( 2, 2 )
+position = Vector2( 48, 36 )
+hex_pos = Vector2( 1, 1 )
 character_name = "Chelle"
 
-[node name="Sir Charles" parent="TurnOrder/Units" index="1" instance=ExtResource( 5 )]
-position = Vector2( 168, 124 )
-body = 2
-hex_pos = Vector2( 6, 5 )
-character_name = "Sir Charles"
+[node name="ComplexCharacterBody" parent="TurnOrder/Units/Chelle" index="5"]
+body = 1
+chest_material = 1
+chest_design = 1
+
+[node name="Body" parent="TurnOrder/Units/Chelle/ComplexCharacterBody" index="0"]
+frame = 54
+
+[node name="Chest" parent="TurnOrder/Units/Chelle/ComplexCharacterBody" index="1"]
+frame = 11
+
+[node name="Grod" parent="TurnOrder/Units" index="1" instance=ExtResource( 5 )]
+position = Vector2( 144, 124 )
+hex_pos = Vector2( 5, 5 )
+character_name = "Grod"
+
+[node name="ComplexCharacterBody" parent="TurnOrder/Units/Grod" index="5"]
+chest_design = 8
 
 [node name="Grid" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -302,3 +314,9 @@ format = 1
 tile_data = PoolIntArray( 0, 5, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 6, 0, 131071, 3, 0, 65548, 4, 0, 131072, 4, 0, 131075, 5, 0, 131076, 6, 0, 131081, 5, 0, 131082, 1, 0, 131083, 1, 0, 131084, 2, 0, 262143, 3, 0, 196610, 3, 0, 196612, 4, 0, 196616, 3, 0, 262144, 4, 0, 262147, 0, 0, 262148, 2, 0, 262153, 0, 0, 262154, 1, 0, 262155, 1, 0, 262156, 6, 0, 393215, 3, 0, 327692, 4, 0, 393216, 0, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 2, 0 )
 
 [editable path="TurnOrder"]
+
+[editable path="TurnOrder/Units/Chelle"]
+
+[editable path="TurnOrder/Units/Chelle/ComplexCharacterBody"]
+
+[editable path="TurnOrder/Units/Grod"]

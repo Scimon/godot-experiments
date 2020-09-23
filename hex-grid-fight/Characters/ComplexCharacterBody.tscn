@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/ComplexCharacterBody.gd" type="Script" id=1]
+[ext_resource path="res://Characters/roguelikeChar_transparent.png" type="Texture" id=2]
+
+[node name="ComplexCharacterBody" type="Node2D"]
+script = ExtResource( 1 )
+body = 3
+chest_material = 5
+chest_design = 9
+
+[node name="Body" type="Sprite" parent="."]
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 2 )
+vframes = 12
+hframes = 54
+frame = 162
+
+[node name="Chest" type="Sprite" parent="."]
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 2 )
+vframes = 12
+hframes = 54
+frame = 393
