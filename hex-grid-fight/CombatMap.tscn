@@ -280,15 +280,14 @@ hex_pos = Vector2( 1, 1 )
 character_name = "Chelle"
 
 [node name="ComplexCharacterBody" parent="TurnOrder/Units/Chelle" index="5"]
-body = 1
-chest_material = 1
-chest_design = 1
-
-[node name="Body" parent="TurnOrder/Units/Chelle/ComplexCharacterBody" index="0"]
-frame = 54
-
-[node name="Chest" parent="TurnOrder/Units/Chelle/ComplexCharacterBody" index="1"]
-frame = 11
+chest_material = 3
+chest_design = 8
+hair_colour = 2
+hair_style = 5
+boot_material = 5
+boot_type = 1
+helm_type = 8
+helm_material = 3
 
 [node name="Grod" parent="TurnOrder/Units" index="1" instance=ExtResource( 5 )]
 position = Vector2( 144, 124 )
@@ -296,7 +295,12 @@ hex_pos = Vector2( 5, 5 )
 character_name = "Grod"
 
 [node name="ComplexCharacterBody" parent="TurnOrder/Units/Grod" index="5"]
-chest_design = 8
+body = 3
+chest_material = 5
+chest_design = 5
+hair_colour = 5
+hair_style = 9
+boot_material = 5
 
 [node name="Grid" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -316,7 +320,5 @@ tile_data = PoolIntArray( 0, 5, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 [editable path="TurnOrder"]
 
 [editable path="TurnOrder/Units/Chelle"]
-
-[editable path="TurnOrder/Units/Chelle/ComplexCharacterBody"]
 
 [editable path="TurnOrder/Units/Grod"]

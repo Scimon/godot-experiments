@@ -22,7 +22,10 @@ func update_display():
 		node.queue_free()
 		
 	for unit in turn_order:
+		var image = unit.unit.get_node("./ComplexCharacterBody").duplicate()
 		var option = ToolButton.new()
+		option.add_child(image)
+		image.global_translate( Vector2(10,10) )
 		option.text = unit.unit.character_name
 		$TurnDisplay/VBoxContainer.add_child(option)
 	next_character()

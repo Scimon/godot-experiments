@@ -39,6 +39,10 @@ window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
+[gui]
+
+theme/custom="res://GameTheme.tres"
+
 [input]
 
 click={
