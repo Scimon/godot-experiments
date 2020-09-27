@@ -9,10 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Action",
+"language": "GDScript",
+"path": "res://Characters/Actions/Action.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
 "path": "res://Character.gd"
+}, {
+"base": "Action",
+"class": "Move",
+"language": "GDScript",
+"path": "res://Characters/Actions/Move.gd"
+}, {
+"base": "Control",
+"class": "PlayerBar",
+"language": "GDScript",
+"path": "res://UI/PlayerBar.gd"
 }, {
 "base": "Node",
 "class": "TurnOrder",
@@ -20,7 +35,10 @@ _global_script_classes=[ {
 "path": "res://TurnOrder.gd"
 } ]
 _global_script_class_icons={
+"Action": "",
 "Character": "",
+"Move": "",
+"PlayerBar": "",
 "TurnOrder": ""
 }
 

@@ -276,6 +276,7 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 
 [node name="Chelle" parent="TurnOrder/Units" index="0" instance=ExtResource( 5 )]
 position = Vector2( 48, 36 )
+walk_speed = 0.75
 hex_pos = Vector2( 1, 1 )
 character_name = "Chelle"
 
