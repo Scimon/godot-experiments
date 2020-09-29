@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Tiles/dungeon-wall-left.png" type="Texture" id=1]
 [ext_resource path="res://Tiles/dungeon-wall-corner-top-left-only.png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://CombatMap.gd" type="Script" id=11]
 [ext_resource path="res://Tiles/hex-overlay.png" type="Texture" id=12]
 [ext_resource path="res://TurnOrder.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Characters/Actions/Move.tres" type="Resource" id=14]
+[ext_resource path="res://Characters/Actions/Punch.tres" type="Resource" id=15]
 
 [sub_resource type="TileSet" id=1]
 0/name = "white-tile-base.png 0"
@@ -275,10 +277,11 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 [node name="TurnOrder" parent="." instance=ExtResource( 13 )]
 
 [node name="Chelle" parent="TurnOrder/Units" index="0" instance=ExtResource( 5 )]
-position = Vector2( 48, 36 )
+position = Vector2( 120, 124 )
 walk_speed = 0.75
-hex_pos = Vector2( 1, 1 )
+hex_pos = Vector2( 4, 5 )
 character_name = "Chelle"
+actions = [ ExtResource( 14 ), ExtResource( 15 ) ]
 
 [node name="ComplexCharacterBody" parent="TurnOrder/Units/Chelle" index="5"]
 chest_material = 3
@@ -294,6 +297,7 @@ helm_material = 3
 position = Vector2( 144, 124 )
 hex_pos = Vector2( 5, 5 )
 character_name = "Grod"
+actions = [ ExtResource( 14 ), ExtResource( 15 ) ]
 
 [node name="ComplexCharacterBody" parent="TurnOrder/Units/Grod" index="5"]
 body = 3

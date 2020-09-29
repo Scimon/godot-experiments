@@ -49,12 +49,18 @@ func _unhandled_input(event):
 		return
 	if event.is_action_released("click"):
 		var click = $Grid.world_to_map(get_global_mouse_position())
-		if selectable.has(click):
+		if selectable.has(click) && selectable[click].selectable:
 			current_action.perform_action(self,$Grid,get_global_mouse_position())
 			acting = false
 			$Grid.visible = false
 			$ActionDone.start()
-
+	if event.is_action_pressed("cancel_action"):
+		$Grid.visible = false
+		acting = false
+		action_select()
 
 func _on_ActionDone_timeout():
 	emit_signal("action_done",update_speed())
+
+func attack(type):
+	print(type)

@@ -58,8 +58,12 @@ radius = 6.78343
 
 [node name="Character" type="KinematicBody2D"]
 position = Vector2( 12, 14 )
+z_index = 1
 script = ExtResource( 1 )
 actions = [ ExtResource( 7 ) ]
+
+[node name="ActionSelect" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [node name="Grid" type="TileMap" parent="."]
 position = Vector2( -12, -14 )
@@ -88,7 +92,5 @@ wait_time = 0.1
 one_shot = true
 
 [node name="ComplexCharacterBody" parent="." instance=ExtResource( 2 )]
-
-[node name="ActionSelect" parent="." instance=ExtResource( 8 )]
-visible = false
+z_as_relative = false
 [connection signal="timeout" from="ActionDone" to="." method="_on_ActionDone_timeout"]
