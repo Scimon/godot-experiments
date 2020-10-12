@@ -1,4 +1,4 @@
-extends Action
+extends Attack
 class_name Punch
 
 var selectable = {}
@@ -11,5 +11,5 @@ func display_possible_selections(hex_pos: Vector2, grid : TileMap):
 	
 func perform_action(actor, grid : TileMap, click: Vector2):
 	var target_hex = grid.world_to_map(click)
-	selectable[target_hex].target.attack(action_name)
+	selectable[target_hex].target.attack(actor, action_name)
 

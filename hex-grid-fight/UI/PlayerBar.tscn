@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/time-bar-empty.png" type="Texture" id=1]
 [ext_resource path="res://UI/time-bar-full.png" type="Texture" id=2]
 [ext_resource path="res://UI/PlayerBar.gd" type="Script" id=3]
+[ext_resource path="res://UI/mini-square.tres" type="DynamicFont" id=4]
 
 [node name="PlayerBar" type="Control"]
 margin_right = 100.0
@@ -43,7 +44,7 @@ rect_min_size = Vector2( 20, 20 )
 
 [node name="Name" type="Label" parent="HBoxContainer"]
 margin_left = 21.0
-margin_top = 3.0
-margin_right = 59.0
-margin_bottom = 17.0
+margin_right = 63.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 4 )
 text = "Name"

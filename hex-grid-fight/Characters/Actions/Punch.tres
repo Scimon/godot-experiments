@@ -6,3 +6,6 @@
 script = ExtResource( 1 )
 action_name = "Punch"
 base_speed = 1.0
+stun_damage = 1
+lethal_damage = 0
+attack_skill = 0
