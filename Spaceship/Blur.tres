@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -17,6 +17,6 @@ void fragment() {
 
 [resource]
 render_priority = 1
-shader = SubResource( 4 )
+shader = SubResource( 1 )
 shader_param/blur_amount = 0.0
 shader_param/alpha = 0.034

@@ -1,17 +1,23 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ship.png" type="Texture" id=1]
 [ext_resource path="res://PlayerShip.gd" type="Script" id=2]
 [ext_resource path="res://Asteroid.tscn" type="PackedScene" id=3]
-[ext_resource path="res://background-1.png" type="Texture" id=4]
+[ext_resource path="res://3x-background.jpg" type="Texture" id=4]
 [ext_resource path="res://ParallaxBackground.gd" type="Script" id=5]
-[ext_resource path="res://Blur.tres" type="Material" id=6]
+[ext_resource path="res://starfield.png" type="Texture" id=6]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0.406082, 0.886262, 1, 1, 1, 1, 0.0235294 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.879747, 0.678401 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=3]
 lifetime_randomness = 0.23
@@ -25,7 +31,12 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 52.99
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+scale = 8.0
+scale_random = 1.0
+scale_curve = SubResource( 5 )
 color_ramp = SubResource( 2 )
+hue_variation = 0.09
+hue_variation_random = 0.5
 
 [node name="Game" type="Node2D"]
 
@@ -73,15 +84,14 @@ scroll_ignore_camera_zoom = true
 script = ExtResource( 5 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1024, 600 )
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 3072, 1722 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-material = ExtResource( 6 )
 texture = ExtResource( 4 )
-centered = false
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-visible = false
-position = Vector2( 0, 1 )
-texture = ExtResource( 4 )
-centered = false
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 2048, 1200 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 6 )
