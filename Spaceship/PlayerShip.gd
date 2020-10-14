@@ -28,7 +28,6 @@ func _input(event):
 		turning = TURN.NONE
 
 func _physics_process(delta):
-	var current_velocity = shipVelocity.SHIP_VELOCITY
 	var vel_change = Vector2.ZERO
 	var direction = Vector2.UP
 	if turning == TURN.LEFT:

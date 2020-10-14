@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float blur_amount : hint_range(0, 20);
+uniform float alpha : hint_range(0,1);
+
+void fragment() {
+	vec3 col = textureLod(TEXTURE, UV, blur_amount).rgb;
+	float avg = (col.r + col.g + col.b) / 3.0;
+	col.rgb = vec3(avg);
+	COLOR = vec4(col,alpha);
+}
+"
+
+[resource]
+render_priority = 1
+shader = SubResource( 4 )
+shader_param/blur_amount = 0.0
+shader_param/alpha = 0.034
