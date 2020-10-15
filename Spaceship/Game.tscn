@@ -3,9 +3,9 @@
 [ext_resource path="res://ship.png" type="Texture" id=1]
 [ext_resource path="res://PlayerShip.gd" type="Script" id=2]
 [ext_resource path="res://Asteroid.tscn" type="PackedScene" id=3]
-[ext_resource path="res://3x-background.jpg" type="Texture" id=4]
+[ext_resource path="res://back2.png" type="Texture" id=4]
 [ext_resource path="res://ParallaxBackground.gd" type="Script" id=5]
-[ext_resource path="res://starfield.png" type="Texture" id=6]
+[ext_resource path="res://new-back.png" type="Texture" id=6]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0.406082, 0.886262, 1, 1, 1, 1, 0.0235294 )
@@ -13,13 +13,13 @@ colors = PoolColorArray( 0, 0.406082, 0.886262, 1, 1, 1, 1, 0.0235294 )
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.879747, 0.678401 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=5]
 lifetime_randomness = 0.23
 emission_shape = 2
 emission_box_extents = Vector3( 8, 1, 1 )
@@ -33,7 +33,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 8.0
 scale_random = 1.0
-scale_curve = SubResource( 5 )
+scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 hue_variation = 0.09
 hue_variation_random = 0.5
@@ -57,14 +57,14 @@ position = Vector2( -22.2727, 19.8391 )
 emitting = false
 amount = 50
 local_coords = false
-process_material = SubResource( 3 )
+process_material = SubResource( 5 )
 
 [node name="EngineRight" type="Particles2D" parent="PlayerShip"]
 position = Vector2( 22.9683, 19.2438 )
 emitting = false
 amount = 30
 local_coords = false
-process_material = SubResource( 3 )
+process_material = SubResource( 5 )
 
 [node name="Asteroid" parent="." instance=ExtResource( 3 )]
 position = Vector2( 336.529, 190.488 )
@@ -88,10 +88,10 @@ motion_scale = Vector2( 0.1, 0.1 )
 motion_mirroring = Vector2( 3072, 1722 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 2048, 1200 )
+motion_mirroring = Vector2( 3172, 1800 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
