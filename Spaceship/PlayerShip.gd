@@ -45,6 +45,6 @@ func _physics_process(delta):
 		$EngineRight.emitting = false
 	
 	shipVelocity.SHIP_VELOCITY -= vel_change
-	
 
-	pass
+func collided(normal : Vector2):
+	shipVelocity.SHIP_VELOCITY = shipVelocity.SHIP_VELOCITY.bounce(normal.rotated(PI)) * .75

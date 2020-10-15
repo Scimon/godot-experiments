@@ -11,4 +11,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _physics_process(delta):
-	self.move_and_collide( ( velocity + shipVelocity.SHIP_VELOCITY) * delta)
+	var collision = self.move_and_collide( ( velocity + shipVelocity.SHIP_VELOCITY) * delta)
+	if collision:
+		if collision.collider.get("velocity") == null:
+			velocity = (velocity + shipVelocity.SHIP_VELOCITY).bounce(collision.normal)
+			collision.collider.collided(collision.normal)
+		else:
+			velocity = velocity.bounce(collision.normal) 

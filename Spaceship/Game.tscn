@@ -66,6 +66,15 @@ amount = 30
 local_coords = false
 process_material = SubResource( 5 )
 
+[node name="Asteroid7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 259.037, 265.102 )
+
+[node name="Asteroid6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 342.193, 244.874 )
+
+[node name="Asteroid5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 290.501, 220.902 )
+
 [node name="Asteroid" parent="." instance=ExtResource( 3 )]
 position = Vector2( 336.529, 190.488 )
 
@@ -85,7 +94,7 @@ script = ExtResource( 5 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.1, 0.1 )
-motion_mirroring = Vector2( 3072, 1722 )
+motion_mirroring = Vector2( 3072, 1800 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 6 )
@@ -95,3 +104,6 @@ motion_mirroring = Vector2( 3172, 1800 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource( 4 )
+
+[node name="Asteroid8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 298.742, 290.573 )
