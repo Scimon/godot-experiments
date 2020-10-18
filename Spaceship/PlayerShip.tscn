@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://PlayerShip.gd" type="Script" id=1]
 [ext_resource path="res://ship.png" type="Texture" id=2]
+[ext_resource path="res://engine4.ogg" type="AudioStream" id=3]
+[ext_resource path="res://laser2.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0.406082, 0.886262, 1, 1, 1, 1, 0.0235294 )
@@ -67,3 +69,12 @@ position = Vector2( -20, -32 )
 
 [node name="RightShot" type="Node2D" parent="."]
 position = Vector2( 20, -32 )
+
+[node name="Shot" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -0.198425, -34.1291 )
+stream = ExtResource( 4 )
+volume_db = -10.0
+
+[node name="Engine" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0

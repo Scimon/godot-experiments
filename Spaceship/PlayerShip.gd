@@ -20,8 +20,11 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("accelerate"):
 		accelerating = true
+		$Engine.play()
 	elif event.is_action_released("accelerate"):
 		accelerating = false
+		$Engine.stop()
+
 
 	if event.is_action_pressed("shoot"):
 		shooting = true
@@ -60,13 +63,8 @@ func _physics_process(delta):
 	if shooting && shot_cool_down == 0:
 		shot_from($LeftShot)
 		shot_from($RightShot)
+		$Shot.play()
 		shot_cool_down = shot_cool_down_base
-
-#		print("shoot")
-#		var shot = Shot.instance()
-#		self.get_parent().add_child(shot)
-#		shot.velocity = -shipVelocity.SHIP_VELOCITY + ( Vector2.UP.rotated(rotation) * shot_speed)
-#		shot.global_position = $LeftShot.global_position
 		
 
 func shot_from(node):
