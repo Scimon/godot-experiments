@@ -7,6 +7,7 @@
 radius = 14.8171
 
 [node name="Asteroid" type="KinematicBody2D"]
+collision_mask = 2147483651
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
