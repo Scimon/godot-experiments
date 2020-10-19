@@ -18,12 +18,10 @@ func _ready():
 	pass
 
 func _input(event):
-	if event.is_action_pressed("accelerate"):
+	if event.is_action_pressed("accelerate") && shipVelocity.DELTA_V > 0:
 		accelerating = true
-		$Engine.play()
-	elif event.is_action_released("accelerate"):
+	elif event.is_action_released("accelerate") || shipVelocity.DELTA_V == 0:
 		accelerating = false
-		$Engine.stop()
 
 
 	if event.is_action_pressed("shoot"):
@@ -51,10 +49,14 @@ func _physics_process(delta):
 	direction = direction.rotated(rotation).normalized()
 
 	if accelerating:
-		vel_change = direction * acceleration * delta
+		vel_change = direction * min(acceleration * delta, shipVelocity.DELTA_V)
+		shipVelocity.update_delta_v( ShipVelocity.DELTA_V - (acceleration * delta))
+		$Engine.play()
 		$EngineLeft.emitting = true
 		$EngineRight.emitting = true
+		
 	else:
+		$Engine.stop()
 		$EngineLeft.emitting = false
 		$EngineRight.emitting = false
 	
