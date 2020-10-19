@@ -7,7 +7,7 @@ onready var shipVelocity = get_node("/root/ShipVelocity")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	velocity = Vector2(randf(), randf()).normalized() * ( 2 * ( randi() % 20  ) )
+	velocity = Vector2(randf(), randf()).normalized() * ( 4 * ( randi() % 20  ) )
 	rotation_speed = .1 - (randf() * .2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
