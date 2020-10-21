@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://PlayerShip.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ParallaxBackground.gd" type="Script" id=5]
 [ext_resource path="res://new-back.png" type="Texture" id=6]
 [ext_resource path="res://Asteroids.gd" type="Script" id=7]
+[ext_resource path="res://TiledAsteroid.tscn" type="PackedScene" id=8]
 
 [node name="Game" type="Node2D"]
 
@@ -76,4 +77,7 @@ margin_bottom = 14.0
 margin_top = 18.0
 margin_right = 286.0
 margin_bottom = 32.0
+
+[node name="TiledAsteroid" parent="." instance=ExtResource( 8 )]
+position = Vector2( 475.884, 172.535 )
 [connection signal="timeout" from="Asteroids/Timer" to="Asteroids" method="_on_Timer_timeout"]
