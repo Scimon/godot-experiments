@@ -8,10 +8,10 @@ func _physics_process(delta):
 	energy = energy - 1
 	var collision = self.move_and_collide( velocity * delta)
 	if collision:
-		collision.collider.queue_free()
+		collision.collider.destroy()
 		queue_free()
 	if energy <= 0:
 		queue_free()
-	if global_position.distance_to(Vector2(512,300)) > 1000:
+	if global_position.distance_to(Vector2(512,300)) > 500:
 		queue_free()
 

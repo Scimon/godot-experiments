@@ -3,6 +3,7 @@ extends KinematicBody2D
 var velocity : Vector2
 var rotation_speed : float
 onready var shipVelocity = get_node("/root/ShipVelocity")
+onready var Fuel = preload("res://Fuel.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,3 +24,10 @@ func _physics_process(delta):
 	rotation = rotation + rotation_speed
 	if global_position.distance_to(Vector2(512,300)) > 1000:
 		queue_free()
+
+func destroy():
+	if randf() < 0.25:
+		var fuel = Fuel.instance()
+		self.get_parent().get_parent().add_child(fuel)
+		fuel.global_position = self.global_position
+	queue_free()
