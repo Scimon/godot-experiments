@@ -1,7 +1,7 @@
 extends Node2D
 
 export var max_asteroids = 50
-onready var Asteroid = preload("res://Asteroid.tscn")
+onready var Asteroid = preload("res://TiledAsteroid.tscn")
 onready var shipVelocity = get_node("/root/ShipVelocity")
 var CENTER = Vector2(512,300)
 

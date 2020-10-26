@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://PlayerShip.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI.gd" type="Script" id=2]
-[ext_resource path="res://Asteroid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://back2.png" type="Texture" id=4]
 [ext_resource path="res://ParallaxBackground.gd" type="Script" id=5]
 [ext_resource path="res://new-back.png" type="Texture" id=6]
@@ -13,32 +12,30 @@
 
 [node name="Asteroids" type="Node2D" parent="."]
 script = ExtResource( 7 )
+max_asteroids = 30
 
 [node name="AsteroidGroup" type="Node2D" parent="Asteroids"]
 
-[node name="Asteroid6" parent="Asteroids/AsteroidGroup" instance=ExtResource( 3 )]
-position = Vector2( 405.051, 114.668 )
+[node name="TiledAsteroid" parent="Asteroids/AsteroidGroup" instance=ExtResource( 8 )]
+position = Vector2( 475.884, 172.535 )
 
-[node name="Asteroid8" parent="Asteroids/AsteroidGroup" instance=ExtResource( 3 )]
-position = Vector2( 193.23, 467.922 )
+[node name="TiledAsteroid2" parent="Asteroids/AsteroidGroup" instance=ExtResource( 8 )]
+position = Vector2( 306.178, 208.597 )
 
-[node name="Asteroid7" parent="Asteroids/AsteroidGroup" instance=ExtResource( 3 )]
-position = Vector2( 259.037, 265.102 )
+[node name="TiledAsteroid3" parent="Asteroids/AsteroidGroup" instance=ExtResource( 8 )]
+position = Vector2( 719.129, 200.819 )
 
-[node name="Asteroid5" parent="Asteroids/AsteroidGroup" instance=ExtResource( 3 )]
-position = Vector2( 739.486, 162.534 )
+[node name="TiledAsteroid4" parent="Asteroids/AsteroidGroup" instance=ExtResource( 8 )]
+position = Vector2( 698.623, 374.06 )
 
-[node name="Asteroid2" parent="Asteroids/AsteroidGroup" instance=ExtResource( 3 )]
-position = Vector2( 679.877, 505.72 )
+[node name="TiledAsteroid5" parent="Asteroids/AsteroidGroup" instance=ExtResource( 8 )]
+position = Vector2( 354.969, 342.948 )
 
-[node name="Asteroid3" parent="Asteroids/AsteroidGroup" instance=ExtResource( 3 )]
-position = Vector2( 781.796, 336.01 )
-
-[node name="Asteroid4" parent="Asteroids/AsteroidGroup" instance=ExtResource( 3 )]
-position = Vector2( 580.581, 166.674 )
+[node name="TiledAsteroid6" parent="Asteroids/AsteroidGroup" instance=ExtResource( 8 )]
+position = Vector2( 502.047, 446.185 )
 
 [node name="Timer" type="Timer" parent="Asteroids"]
-wait_time = 0.01
+wait_time = 0.1
 autostart = true
 
 [node name="PlayerShip" parent="." instance=ExtResource( 1 )]
@@ -77,7 +74,4 @@ margin_bottom = 14.0
 margin_top = 18.0
 margin_right = 286.0
 margin_bottom = 32.0
-
-[node name="TiledAsteroid" parent="." instance=ExtResource( 8 )]
-position = Vector2( 475.884, 172.535 )
 [connection signal="timeout" from="Asteroids/Timer" to="Asteroids" method="_on_Timer_timeout"]
