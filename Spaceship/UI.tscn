@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI.gd" type="Script" id=1]
+
+[node name="UI" type="VBoxContainer"]
+margin_right = 286.0
+margin_bottom = 159.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Velocity" type="Label" parent="."]
+margin_right = 286.0
+margin_bottom = 14.0
+
+[node name="Fuel" type="Label" parent="."]
+margin_top = 18.0
+margin_right = 286.0
+margin_bottom = 32.0
