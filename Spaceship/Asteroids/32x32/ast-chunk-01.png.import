@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ast-chunk-01.png-911d8048302cc39646e417cae4587550.stex"
+path="res://.import/ast-chunk-01.png-d5e38dc17d8aa9e01a194da9cd3cd89e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ast-chunk-01.png"
-dest_files=[ "res://.import/ast-chunk-01.png-911d8048302cc39646e417cae4587550.stex" ]
+source_file="res://Asteroids/32x32/ast-chunk-01.png"
+dest_files=[ "res://.import/ast-chunk-01.png-d5e38dc17d8aa9e01a194da9cd3cd89e.stex" ]
 
 [params]
 

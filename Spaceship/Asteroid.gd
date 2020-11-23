@@ -5,9 +5,12 @@ var rotation_speed : float
 onready var shipVelocity = get_node("/root/ShipVelocity")
 onready var Fuel = preload("res://Fuel.tscn")
 
+onready var sprites = [ preload("res://Asteroids/32x32/ast-chunk-01.png"), preload("res://Asteroids/32x32/ast-chunk-02.png") ]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	$Sprite.texture = sprites[ floor( rand_range( 0, len(sprites) ) ) ]
 	velocity = Vector2(randf(), randf()).normalized() * ( 4 * ( randi() % 20  ) )
 	rotation_speed = .1 - (randf() * .2)
 
