@@ -1,0 +1,1 @@
+for x in {00..25};do raku ~/src/raku/test-erosion.raku --sz=48 --er=1 --rp=5 --hd=1 --image-name=ast-$x; convert ast-$x.png -transparent "#ffffff" ast-$x.png; done
