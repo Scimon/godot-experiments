@@ -1,7 +1,9 @@
 extends Node2D
 
 export var max_asteroids = 50
-onready var Asteroid = preload("res://Asteroid.tscn")
+onready var AsteroidSmall = preload("res://Asteroids/Asteroid-small.tscn")
+onready var AsteroidMed = preload("res://Asteroids/Asteroid-med.tscn")
+onready var AsteroidLrg = preload("res://Asteroids/Asteroid-lrg.tscn")
 onready var shipVelocity = get_node("/root/ShipVelocity")
 var CENTER = Vector2(512,300)
 
@@ -13,13 +15,20 @@ func _process(delta):
 	pass
 
 func _on_Timer_timeout():
-	if $AsteroidGroup.get_child_count() < max_asteroids:
+	var currentCount = $AsteroidGroup.get_child_count()
+	if currentCount < max_asteroids:
 		var velocity = shipVelocity.SHIP_VELOCITY
 		if velocity.length() == 0:
 			velocity = Vector2.DOWN
 		velocity = velocity.rotated(PI)
 		var target = get_point(velocity)
-		var asteroid = Asteroid.instance()
+		var asteroid
+		if currentCount % 3 == 0:
+			asteroid = AsteroidLrg.instance()
+		elif currentCount % 2 == 0:
+			asteroid = AsteroidMed.instance()
+		else:
+			asteroid = AsteroidSmall.instance()
 		asteroid.global_position = target
 		$AsteroidGroup.add_child(asteroid)
 

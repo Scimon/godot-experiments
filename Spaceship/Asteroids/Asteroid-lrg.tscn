@@ -3,11 +3,13 @@
 [ext_resource path="res://Asteroid.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 14.8171
+radius = 31.0
 
 [node name="Asteroid" type="KinematicBody2D"]
 collision_mask = 2147483651
 script = ExtResource( 1 )
+size = 64
+maxItems = 10
 
 [node name="Sprite" type="Sprite" parent="."]
 
