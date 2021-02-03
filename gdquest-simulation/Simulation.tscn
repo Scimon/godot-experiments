@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/Tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Simulation.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Entities/StirlingEngineEntity.tscn" type="PackedScene" id=4]
 
 [node name="Simulation" type="Node"]
 script = ExtResource( 3 )
@@ -18,5 +19,17 @@ tile_data = PoolIntArray( 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65
 
 [node name="YSort" type="YSort" parent="GameWorld"]
 
-[node name="Player" parent="GameWorld" instance=ExtResource( 1 )]
-position = Vector2( 0, 230.173 )
+[node name="EntityPlacer" type="TileMap" parent="GameWorld/YSort"]
+mode = 1
+cell_size = Vector2( 100, 50 )
+cell_y_sort = true
+format = 1
+
+[node name="StirlingEngineEntity" parent="GameWorld/YSort/EntityPlacer" instance=ExtResource( 4 )]
+position = Vector2( 0.192566, 424.108 )
+
+[node name="StirlingEngineEntity2" parent="GameWorld/YSort/EntityPlacer" instance=ExtResource( 4 )]
+position = Vector2( 1.45251, 373.711 )
+
+[node name="Player" parent="GameWorld/YSort" instance=ExtResource( 1 )]
+position = Vector2( -41.855, 403.53 )
