@@ -18,10 +18,52 @@ _global_script_classes=[ {
 "class": "Entity",
 "language": "GDScript",
 "path": "res://Entities/Entity.gd"
+}, {
+"base": "Reference",
+"class": "EntityTracker",
+"language": "GDScript",
+"path": "res://EntityTracker.gd"
+}, {
+"base": "Node",
+"class": "PowerReceiver",
+"language": "GDScript",
+"path": "res://PowerReceiver.gd"
+}, {
+"base": "Node",
+"class": "PowerSource",
+"language": "GDScript",
+"path": "res://PowerSource.gd"
+}, {
+"base": "Reference",
+"class": "PowerSystem",
+"language": "GDScript",
+"path": "res://Systems/PowerSystem.gd"
+}, {
+"base": "Reference",
+"class": "Types",
+"language": "GDScript",
+"path": "res://Types.gd"
+}, {
+"base": "BlueprintEntity",
+"class": "WireBlueprint",
+"language": "GDScript",
+"path": "res://Entities/Blueprints/WireBlueprint.gd"
+}, {
+"base": "Entity",
+"class": "WireEntity",
+"language": "GDScript",
+"path": "res://Entities/Entities/WireEntity.gd"
 } ]
 _global_script_class_icons={
 "BlueprintEntity": "",
-"Entity": ""
+"Entity": "",
+"EntityTracker": "",
+"PowerReceiver": "",
+"PowerSource": "",
+"PowerSystem": "",
+"Types": "",
+"WireBlueprint": "",
+"WireEntity": ""
 }
 
 [application]
@@ -29,6 +71,10 @@ _global_script_class_icons={
 config/name="godot-2d-builder Starter"
 run/main_scene="res://Simulation.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Events="*res://Autoload/Events.gd"
 
 [display]
 

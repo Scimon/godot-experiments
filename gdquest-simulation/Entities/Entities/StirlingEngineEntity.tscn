@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entities/Entities/StirlingEngineEntity.gd" type="Script" id=1]
 [ext_resource path="res://Shared/tileset.svg" type="Texture" id=2]
+[ext_resource path="res://PowerSource.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "StirlingEngine"
@@ -33,38 +34,44 @@ tracks/1/keys = {
 "values": [ Vector2( 0.561226, -32.3208 ), Vector2( 0.561, -58.017 ), Vector2( 0.561, -32.321 ) ]
 }
 
-[node name="StirlingEngineEntity" type="StaticBody2D"]
+[node name="StirlingEngineEntity" type="StaticBody2D" groups=[
+"power_sources",
+]]
 script = ExtResource( 1 )
 
 [node name="Base" type="Sprite" parent="."]
-position = Vector2( -0.667419, 4.85402 )
+position = Vector2( 0, -4.82359 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 449, 149, 102, 62 )
 
 [node name="PistonBack" type="Sprite" parent="."]
-position = Vector2( -0.106422, -22.9771 )
+position = Vector2( 0.560997, -32.6547 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 780, 139, 100, 27 )
 
 [node name="PistonShaft" type="Sprite" parent="."]
-position = Vector2( -0.106171, -15.9115 )
+position = Vector2( 0.561249, -31.9296 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 584, 119, 52, 70 )
 
 [node name="PistonFront" type="Sprite" parent="."]
-position = Vector2( -0.700836, 7.09895 )
+position = Vector2( -0.0334167, -2.57866 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 669, 164, 102, 37 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 0.276443, 9.81581 )
+position = Vector2( 0.943863, 0.138206 )
 polygon = PoolVector2Array( -50.551, -0.0407257, -50.0791, -15.6147, -0.0537262, -39.6834, 49.4997, -14.6708, 49.9716, -0.984604, -0.0537262, 25.4439 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/StirlingEngine = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="PowerSource" type="Node" parent="."]
+script = ExtResource( 3 )
+power_amount = 25.0
