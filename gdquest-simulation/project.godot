@@ -24,6 +24,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://EntityTracker.gd"
 }, {
+"base": "Node2D",
+"class": "GroundItem",
+"language": "GDScript",
+"path": "res://Entities/GroundItem.gd"
+}, {
+"base": "HBoxContainer",
+"class": "InventoryBar",
+"language": "GDScript",
+"path": "res://GUI/InventoryBar.gd"
+}, {
+"base": "Panel",
+"class": "InventoryPanel",
+"language": "GDScript",
+"path": "res://GUI/InventoryPanel.gd"
+}, {
 "base": "Node",
 "class": "PowerReceiver",
 "language": "GDScript",
@@ -38,6 +53,11 @@ _global_script_classes=[ {
 "class": "PowerSystem",
 "language": "GDScript",
 "path": "res://Systems/PowerSystem.gd"
+}, {
+"base": "InventoryBar",
+"class": "QuickBar",
+"language": "GDScript",
+"path": "res://GUI/QuickBar.gd"
 }, {
 "base": "Reference",
 "class": "Types",
@@ -58,9 +78,13 @@ _global_script_class_icons={
 "BlueprintEntity": "",
 "Entity": "",
 "EntityTracker": "",
+"GroundItem": "",
+"InventoryBar": "",
+"InventoryPanel": "",
 "PowerReceiver": "",
 "PowerSource": "",
 "PowerSystem": "",
+"QuickBar": "",
 "Types": "",
 "WireBlueprint": "",
 "WireEntity": ""
@@ -75,11 +99,16 @@ config/icon="res://icon.png"
 [autoload]
 
 Events="*res://Autoload/Events.gd"
+Library="*res://Autoload/Library.gd"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
+
+[game_gui]
+
+inventory_size=75.0
 
 [input]
 
