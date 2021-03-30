@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://EntityTracker.gd"
 }, {
+"base": "Control",
+"class": "GUISprite",
+"language": "GDScript",
+"path": "res://GUI/GUISprite.gd"
+}, {
 "base": "Node2D",
 "class": "GroundItem",
 "language": "GDScript",
@@ -60,6 +65,11 @@ _global_script_classes=[ {
 "path": "res://GUI/QuickBar.gd"
 }, {
 "base": "Reference",
+"class": "Recipes",
+"language": "GDScript",
+"path": "res://Recipes.gd"
+}, {
+"base": "Reference",
 "class": "Types",
 "language": "GDScript",
 "path": "res://Types.gd"
@@ -78,6 +88,7 @@ _global_script_class_icons={
 "BlueprintEntity": "",
 "Entity": "",
 "EntityTracker": "",
+"GUISprite": "",
 "GroundItem": "",
 "InventoryBar": "",
 "InventoryPanel": "",
@@ -85,6 +96,7 @@ _global_script_class_icons={
 "PowerSource": "",
 "PowerSystem": "",
 "QuickBar": "",
+"Recipes": "",
 "Types": "",
 "WireBlueprint": "",
 "WireEntity": ""

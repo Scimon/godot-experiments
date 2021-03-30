@@ -66,12 +66,31 @@ func _unhandled_input(event: InputEvent) -> void:
 			_abort_deconstruct()
 		if has_placeable_gui_blueprint:
 			_move_gui_blueprint_in_world(cellv)
+		else:
+			_update_hover(cellv)
 	elif event.is_action_pressed("drop") and _gui.blueprint:
 		if is_on_ground:
 			_drop_entity(_gui.blueprint, global_mouse_position)
 			_gui.blueprint = null
 	elif event.is_action_pressed("rotate_blueprint") and _gui.blueprint:
 		_gui.blueprint.rotate_blueprint()
+
+func _update_hover(cellv: Vector2) -> void:
+	var is_close_to_player := (
+		get_global_mouse_position().distance_to(_player.global_position)
+		< MAXIMUM_WORK_DISTANCE
+	)
+	if _tracker.is_cell_occupied(cellv) and is_close_to_player:
+		_hover_entity(cellv)
+	else:
+		_clear_hover_entity(cellv)
+
+func _hover_entity(cellv: Vector2) -> void:
+	var entity: Node2D = _tracker.get_entity_at(cellv)
+	Events.emit_signal("hovered_over_entity", entity)
+
+func _clear_hover_entity(cellv: Vector2) -> void:
+	Events.emit_signal("hovered_over_entity", null)
 
 func _move_gui_blueprint_in_world(cellv: Vector2) -> void:
 	_gui.blueprint.display_as_world_entity()

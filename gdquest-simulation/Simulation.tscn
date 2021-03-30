@@ -65,4 +65,9 @@ position = Vector2( -41.855, 403.53 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 4 )]
+debug_items = {
+"Battery": 4,
+"Ingot": 5,
+"StirlingEngine": 5
+}
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

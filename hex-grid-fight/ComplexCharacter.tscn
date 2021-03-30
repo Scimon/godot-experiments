@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
 [ext_resource path="res://Characters/ComplexCharacterBody.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Tiles/hex-valid.png" type="Texture" id=6]
 [ext_resource path="res://Characters/Actions/Move.tres" type="Resource" id=7]
 [ext_resource path="res://Characters/ActionSelect.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Characters/ActionDisplay.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "overlay"
@@ -61,6 +62,8 @@ position = Vector2( 12, 14 )
 z_index = 1
 script = ExtResource( 1 )
 actions = [ ExtResource( 7 ) ]
+
+[node name="ActionDisplay" parent="." instance=ExtResource( 9 )]
 
 [node name="ActionSelect" parent="." instance=ExtResource( 8 )]
 visible = false

@@ -18,7 +18,7 @@ var move_action = Move.new()
 var current_action = move_action
 const CENTER_VEC = Vector2(12,14)
 
-var ActionDisplay = preload("res://Characters/ActionDisplay.tscn")
+onready var _action_display = $ActionDisplay
 
 signal action_done(speed_change)
 signal time_updated(new_time)
@@ -76,17 +76,15 @@ func action_complete():
 	emit_signal("action_done",update_speed())
 
 func display_message(message):
-	var actionDisplay = ActionDisplay.instance()
-	self.add_child(actionDisplay)
-	actionDisplay.display_message(message)
-	yield(actionDisplay, "message_displayed")	
+	_action_display.display_message(message)
+	yield(_action_display, "message_displayed")
 	return
 
 func attack(attacker, type):
-	display_message(attacker.character_name + " " + type + " at " + character_name)
-	var difference = attack_check(attacker)
+	yield( display_message(attacker.character_name + " " + type + " at " + character_name), "completed" )
+	var difference = yield( attack_check(attacker), "completed" )
 	if difference > 0:
-		var damage_mod = defence_check( difference, self )
+		var damage_mod = yield( defence_check( difference, self ), "completed" )
 	action_complete()
 
 func d100_roll():
@@ -96,31 +94,31 @@ func d100_roll():
 func attack_check(attacker):
 	var attack = attacker.get_attack()
 	var roll =  d100_roll()
-	attacker.display_message("Needs " + str(attack) + " got " + str(roll) )
+	yield( attacker.display_message("Needs " + str(attack) + " got " + str(roll) ), "completed" )
 	if roll <= attack:
 		return attack - roll
 	else:
-		attacker.display_message("Miss")
+		yield( attacker.display_message("Miss"), "completed" )
 		return -1
 
 func defence_check(attack_value, target):
 	var defence = target.get_defence()
 	var roll = d100_roll()
-	target.display_message("Needs " + str(defence) + " got " + str(roll) )
+	yield( target.display_message("Needs " + str(defence) + " got " + str(roll) ), "completed" )
 	var difference = defence - roll
 	if roll <= defence:
 		if difference < attack_value:
-			target.display_message("Glancing blow")
+			yield( target.display_message("Glancing blow"), "completed" )
 			return 0.5
 		else:
-			target.display_message("Dodged")
+			yield( target.display_message("Dodged"), "completed" )
 			return 0
 	else:
 		if difference * 2 < attack_value:
-			target.display_message("Critical Hit")
+			yield( target.display_message("Critical Hit"), "completed" )
 			return 2
 		else:
-			target.display_message("Hit")
+			yield( target.display_message("Hit"), "completed" )
 			return 1
 
 	

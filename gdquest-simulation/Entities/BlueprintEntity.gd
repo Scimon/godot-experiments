@@ -5,6 +5,8 @@ export var placeable := true
 
 export var stack_size := 1
 
+export(String, MULTILINE) var description := ""
+
 var stack_count := 1
 
 onready var _power_direction := find_node("PowerDirection")
