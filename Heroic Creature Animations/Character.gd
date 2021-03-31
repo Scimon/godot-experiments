@@ -102,8 +102,8 @@ export( CharacterTypes ) var character_type = 0 setget set_character_type
 
 var character_offset : int = 0 setget set_character_offset
 export var face_left : bool = false setget set_face_left
-export var max_move_distance : int = 100
-export var speed : float = 10.0
+export var max_move_distance : int = 200
+export var speed : float = 25.0
 
 onready var anim = $AnimationPlayer
 onready var sprite = $CharacterSprite
@@ -139,13 +139,14 @@ func _on_move_to_updated(position):
 	if ( self.position.distance_to(position) <= max_move_distance ):
 		move_to_location = position
 		
-func _process(delta):
+func _physics_process(delta):
 	if (move_to_location):
-		if (self.position.distance_to(move_to_location) <= 10):
+		if (self.position.distance_to(move_to_location) <= 8):
 			anim.play("Idle")
 			move_to_location = null
 		else :
 			anim.play("Walk")
 			var direction = self.position.direction_to(move_to_location).normalized() * speed * delta
-			self.position += direction
+			var new_pos = self.position + self.move_and_slide(direction)
+			self.position = new_pos
 			self.face_left = direction.x < 0

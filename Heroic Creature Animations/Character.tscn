@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://SpriteSheets/CastleSpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://AnimationPlayer.gd" type="Script" id=2]
@@ -103,10 +103,18 @@ tracks/0/keys = {
 "values": [ Rect2( 64, 16, 16, 16 ), Rect2( 80, 16, 16, 16 ), Rect2( 96, 16, 16, 16 ), Rect2( 112, 16, 16, 16 ) ]
 }
 
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 4.28601
+height = 14.3287
+
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 3 )
+max_move_distance = 100
+speed = 10.0
 
 [node name="CharacterSprite" type="Sprite" parent="."]
+position = Vector2( 0, -12 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 16, 16 )
@@ -121,3 +129,7 @@ anims/Special = SubResource( 5 )
 anims/SpecialRev = SubResource( 6 )
 anims/Walk = SubResource( 7 )
 script = ExtResource( 2 )
+
+[node name="WalkingCollider" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 8 )

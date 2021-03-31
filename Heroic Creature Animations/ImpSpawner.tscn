@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://SpriteSheets/imp-spawner1.png" type="Texture" id=1]
 [ext_resource path="res://SpriteSheets/imp-spawner2.png" type="Texture" id=2]
@@ -12,13 +12,25 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="ImpSpawner" type="AnimatedSprite"]
-frames = SubResource( 1 )
-speed_scale = 0.5
-playing = true
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 6.70755
+height = 18.3562
+
+[node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="ImpSpawner" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+frame = 1
+speed_scale = 0.5
+playing = true
+
+[node name="MoveCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4 )
+rotation = 1.5708
+shape = SubResource( 2 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
