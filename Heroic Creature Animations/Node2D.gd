@@ -1,15 +1,17 @@
 extends Node2D
 
-onready var Character = preload("res://Character.tscn")
+onready var Spearman = preload("res://Creatures/Spearman.tscn")
+onready var SpearImp = preload("res://Creatures/SpearImp.tscn")
 
 func _ready():
 	pass
 
 func _unhandled_input(event : InputEvent):
 	if event.is_action_released("left_click"):
-		var character = Character.instance()
+		var character = Spearman.instance()
 		$YSort.add_child(character)
-		character.position = Vector2( int(event.position.x), int(event.position.y) )
-		character.init()
+		character.init(0, Vector2( int(event.position.x), int(event.position.y) ))
 	if event.is_action_released("right_click"):
-		EventBus.emit_signal("move_to_location", event.position)
+		var character = SpearImp.instance()
+		$YSort.add_child(character)
+		character.init(1, Vector2( int(event.position.x), int(event.position.y) ))

@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://SpriteSheets/CastleSpriteSheet.png" type="Texture" id=1]
+[ext_resource path="res://Creatures/Character.gd" type="Script" id=1]
 [ext_resource path="res://AnimationPlayer.gd" type="Script" id=2]
-[ext_resource path="res://Character.gd" type="Script" id=3]
+[ext_resource path="res://SpriteSheets/CastleSpriteSheet.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 tracks/0/type = "value"
@@ -86,42 +86,27 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 368, 16, 16, 16 ), Rect2( 352, 16, 16, 16 ), Rect2( 336, 16, 16, 16 ), Rect2( 320, 16, 16, 16 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
 "values": [ Rect2( 64, 16, 16, 16 ), Rect2( 80, 16, 16, 16 ), Rect2( 96, 16, 16, 16 ), Rect2( 112, 16, 16, 16 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=8]
-radius = 4.28601
-height = 14.3287
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 7.5
+height = 7.0
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=8]
 radius = 128.0
 
 [node name="Character" type="KinematicBody2D"]
 collision_layer = 3
-script = ExtResource( 3 )
-max_move_distance = 100
-speed = 10.0
+script = ExtResource( 1 )
+retreat_distance = 16.0
 
 [node name="CharacterSprite" type="Sprite" parent="."]
 position = Vector2( 0, -12 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 0, 16, 16, 16 )
+region_rect = Rect2( 16, 16, 16, 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CharacterSprite")
@@ -130,13 +115,13 @@ anims/Death = SubResource( 2 )
 anims/Hit = SubResource( 3 )
 anims/Idle = SubResource( 4 )
 anims/Special = SubResource( 5 )
-anims/SpecialRev = SubResource( 6 )
-anims/Walk = SubResource( 7 )
+anims/Walk = SubResource( 6 )
 script = ExtResource( 2 )
 
 [node name="WalkingCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -2.5 )
 rotation = 1.5708
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="AttackRight" type="RayCast2D" parent="."]
 enabled = true
@@ -153,7 +138,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackView"]
-shape = SubResource( 9 )
+shape = SubResource( 8 )
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 4.0

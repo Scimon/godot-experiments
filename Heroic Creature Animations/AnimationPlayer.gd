@@ -15,7 +15,7 @@ func setup_animations():
 	idle_anim.loop = true
 	self.add_animation("Idle", idle_anim)
 	self.add_animation("Walk", make_animation(4))
-	self.add_animation("Attack", make_animation(8))
+	self.add_animation("Attack", make_animation(8, self.get_parent().attack_speed))
 	self.add_animation("Hit", make_animation(12))
 	self.add_animation("Death", make_animation(16))
 	self.add_animation("Special", make_animation(20))
@@ -28,12 +28,12 @@ func make_base_animation( start_x_offset : int ):
 	anim.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)
 	return [anim, track_index]
 	
-func make_animation( start_x_offset : int ):
+func make_animation( start_x_offset : int, speed : float = 1.0 ):
 	var opts = make_base_animation( start_x_offset )
 	var anim = opts[0]
 	var track_index = opts[1]
 	for i in range(4):
-		var index = 0.25 * i
+		var index = speed / 4.0 * i
 		var x_offset = (start_x_offset + i) * 16
 		var rect =  Rect2(x_offset, self.get_y_offset(),16, 16)
 		anim.track_insert_key(track_index, index, rect)
