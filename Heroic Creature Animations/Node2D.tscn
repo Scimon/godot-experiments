@@ -9,4 +9,4 @@ script = ExtResource( 2 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="ImpSpawner" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 400, 400 )
+position = Vector2( 1028.62, 745.458 )

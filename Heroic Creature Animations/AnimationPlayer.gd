@@ -19,8 +19,6 @@ func setup_animations():
 	self.add_animation("Hit", make_animation(12))
 	self.add_animation("Death", make_animation(16))
 	self.add_animation("Special", make_animation(20))
-	self.add_animation("SpecialRev", make_animation_reverse(20))
-	self.play("Idle")
 	self.clear_caches()
 	
 func make_base_animation( start_x_offset : int ):
@@ -40,18 +38,7 @@ func make_animation( start_x_offset : int ):
 		var rect =  Rect2(x_offset, self.get_y_offset(),16, 16)
 		anim.track_insert_key(track_index, index, rect)
 	return anim 
-	
-func make_animation_reverse( start_x_offset : int ):
-	var opts = make_base_animation( start_x_offset )
-	var anim = opts[0]
-	var track_index = opts[1]
-	for i in range(4):
-		var index = 0.25 * i
-		var x_offset = (start_x_offset + 3 - i) * 16
-		var rect =  Rect2(x_offset, self.get_y_offset(),16, 16)
-		anim.track_insert_key(track_index, index, rect)
-	return anim 
-	
+
 func update_animations():
 	for a in (self.get_animation_list()):
 		self.remove_animation(a)

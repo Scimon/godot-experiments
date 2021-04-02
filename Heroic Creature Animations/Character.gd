@@ -108,7 +108,10 @@ export var speed : float = 25.0
 onready var anim = $AnimationPlayer
 onready var sprite = $CharacterSprite
 
+var team_id : int = 0
 var move_to_location
+var attack_damage = [1,10]
+var hit_points = 10
 
 func set_face_left( value : bool ) -> bool:
 	if (sprite):
@@ -133,6 +136,7 @@ func set_character_offset( value : int ) -> int :
 	return value
 
 func init():
+	anim.play("Idle")
 	EventBus.connect("move_to_location", self, "_on_move_to_updated")
 	
 func _on_move_to_updated(position):
@@ -140,8 +144,21 @@ func _on_move_to_updated(position):
 		move_to_location = position
 		
 func _physics_process(delta):
-	if (move_to_location):
-		if (self.position.distance_to(move_to_location) <= 8):
+	if self.hit_points == 0:
+		return
+	var target_right = $AttackRight.get_collider()
+	var target_left = $AttackLeft.get_collider()
+	if ( target_right && target_right.team_id != self.team_id && target_right.hit_points > 0):
+		move_to_location = null
+		anim.play("Attack")
+		target_right.attacked_for( int(rand_range(attack_damage[0], attack_damage[1]) ) )
+	elif ( target_left && target_left.team_id != self.team_id && target_left.hit_points > 0):
+		self.face_left = true
+		move_to_location = null
+		anim.play("Attack")
+		target_left.attacked_for( int(rand_range(attack_damage[0], attack_damage[1]) ) )
+	elif (move_to_location):
+		if (self.position.distance_to(move_to_location) <= 4):
 			anim.play("Idle")
 			move_to_location = null
 		else :
@@ -150,3 +167,22 @@ func _physics_process(delta):
 			var new_pos = self.position + self.move_and_slide(direction)
 			self.position = new_pos
 			self.face_left = direction.x < 0
+	else:
+		if (anim):
+			anim.play("Idle")
+
+func attacked_for( damage ):
+	anim.clear_queue()
+	anim.queue("Hit")
+	self.hit_points -= clamp( damage, 0, self.hit_points )
+	if self.hit_points <= 0:
+		anim.queue("Death")
+		$DeathTimer.start()
+
+func _on_AttackView_body_entered(body : Character):
+	if (body.team_id != self.team_id):
+		self.move_to_location = body.global_position
+
+
+func _on_DeathTimer_timeout():
+	self.queue_free() # Replace with function body.

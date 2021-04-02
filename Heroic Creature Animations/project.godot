@@ -46,6 +46,11 @@ right_click={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Collision"
+2d_physics/layer_2="Attackable"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
