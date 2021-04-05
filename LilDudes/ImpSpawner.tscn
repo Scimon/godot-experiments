@@ -13,17 +13,16 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 6.70755
-height = 18.3562
+radius = 4.0
+height = 8.0
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="ImpSpawner" type="StaticBody2D"]
 script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="ImpSpawner" type="AnimatedSprite" parent="."]
-scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 frame = 1
 speed_scale = 0.5
@@ -33,5 +32,4 @@ playing = true
 position = Vector2( 0, 4 )
 rotation = 1.5708
 shape = SubResource( 2 )
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

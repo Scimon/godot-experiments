@@ -20,8 +20,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Heroic Creature Animations"
-run/main_scene="res://Node2D.tscn"
+config/name="LilDudes"
+config/description="Summon hordes of Lil Dudes to fight the forces of evil."
+run/main_scene="res://WorldMap.tscn"
 config/icon="res://icon.png"
 
 [autoload]

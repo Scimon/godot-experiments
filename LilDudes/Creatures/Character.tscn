@@ -90,16 +90,17 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=7]
-radius = 7.5
-height = 7.0
+radius = 12.0
+height = 0.0
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 128.0
 
 [node name="Character" type="KinematicBody2D"]
+position = Vector2( 102.926, 70.7857 )
 collision_layer = 3
 script = ExtResource( 1 )
-retreat_distance = 16.0
+attack_distance = 36.0
 
 [node name="CharacterSprite" type="Sprite" parent="."]
 position = Vector2( 0, -12 )
@@ -119,16 +120,18 @@ anims/Walk = SubResource( 6 )
 script = ExtResource( 2 )
 
 [node name="WalkingCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2.5 )
+position = Vector2( 0, -6 )
 rotation = 1.5708
 shape = SubResource( 7 )
 
 [node name="AttackRight" type="RayCast2D" parent="."]
+position = Vector2( 0, -6 )
 enabled = true
 cast_to = Vector2( 24, 0 )
 collision_mask = 2
 
 [node name="AttackLeft" type="RayCast2D" parent="."]
+position = Vector2( 0, -6 )
 enabled = true
 cast_to = Vector2( -24, 0 )
 collision_mask = 2
@@ -143,6 +146,5 @@ shape = SubResource( 8 )
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
-
 [connection signal="body_entered" from="AttackView" to="." method="_on_AttackView_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
