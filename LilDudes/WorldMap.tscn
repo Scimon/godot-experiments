@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Spawner.gd" type="Script" id=1]
 [ext_resource path="res://TileMaps/sea.tres" type="Texture" id=2]
 [ext_resource path="res://TileMaps/GB-LandTileset.png" type="Texture" id=3]
-[ext_resource path="res://ImpSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://WorldItems/ImpSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://WorldItems/SummonCrystal.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 16, 16, 0, 16, 16 )
@@ -279,8 +280,21 @@ tile_data = PoolIntArray( 65539, 0, 0, 65549, 0, 327682, 65550, 0, 458759, 65551
 [node name="YSort" type="YSort" parent="."]
 z_index = 1
 
+[node name="SummonCrystal2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 556, 340.641 )
+
 [node name="ImpSpawner" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 575.978, 106.863 )
+position = Vector2( 1042, 557.876 )
 
 [node name="ImpSpawner2" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 1021.6, 559.215 )
+position = Vector2( 571, 103.641 )
+
+[node name="SummonCrystal" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 266, 553.641 )
+controlled = 100
+
+[node name="SummonCrystal3" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 544, 758.139 )
+
+[node name="SummonCrystal4" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 784, 573.139 )

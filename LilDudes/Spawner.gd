@@ -1,7 +1,6 @@
 extends Node2D
 
 onready var Spearman = preload("res://Creatures/Spearman.tscn")
-onready var SpearImp = preload("res://Creatures/SpearImp.tscn")
 
 func _ready():
 	pass
