@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Teams/Team.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+team_id = 0
+team_color = Color( 0.0941176, 0.105882, 0.87451, 1 )
+team_name = "Humans"
+is_ai = false

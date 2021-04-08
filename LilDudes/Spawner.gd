@@ -1,9 +1,28 @@
+tool
 extends Node2D
 
 onready var Spearman = preload("res://Creatures/Spearman.tscn")
+onready var Spearimp = preload("res://Creatures/SpearImp.tscn")
+
+export(Array, Resource) var teams
+
+var next_spawn = 0
 
 func _ready():
+	EventBus.connect("spawn_creature", self, "_on_random_spawn")
 	pass
+
+func _on_random_spawn(position, team_id):
+	var imp = Spearimp.instance()
+	$YSort.add_child(imp)
+	var vec = Vector2(rand_range(-1,1), rand_range(-1,1)).normalized() * 16
+	imp.init(team_id, position + vec)
+
+func get_team_by_id(id):
+	for team in teams:
+		if (team.team_id == id):
+			return team
+	return null
 
 func valid_start(event : InputEvent):
 	if ! "position" in event :
