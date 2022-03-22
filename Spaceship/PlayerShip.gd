@@ -77,4 +77,4 @@ func shot_from(node):
 	shot.rotation = self.rotation
 
 func collided(normal : Vector2):
-	shipVelocity.SHIP_VELOCITY = shipVelocity.SHIP_VELOCITY + shipVelocity.SHIP_VELOCITY.bounce(normal.rotated(PI)) * .75
+	shipVelocity.SHIP_VELOCITY = shipVelocity.SHIP_VELOCITY.bounce( normal)

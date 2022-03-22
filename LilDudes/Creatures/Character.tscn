@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Creatures/Character.gd" type="Script" id=1]
 [ext_resource path="res://AnimationPlayer.gd" type="Script" id=2]
 [ext_resource path="res://SpriteSheets/CastleSpriteSheet.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "values": [ Rect2( 128, 16, 16, 16 ), Rect2( 144, 16, 16, 16 ), Rect2( 160, 16, 16, 16 ), Rect2( 176, 16, 16, 16 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
@@ -32,7 +32,7 @@ tracks/0/keys = {
 "values": [ Rect2( 256, 16, 16, 16 ), Rect2( 272, 16, 16, 16 ), Rect2( 288, 16, 16, 16 ), Rect2( 304, 16, 16, 16 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "values": [ Rect2( 192, 16, 16, 16 ), Rect2( 208, 16, 16, 16 ), Rect2( 224, 16, 16, 16 ), Rect2( 240, 16, 16, 16 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=12]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:region_rect")
@@ -61,7 +61,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 16, 16, 16 ), Rect2( 16, 16, 16, 16 ), Rect2( 32, 16, 16, 16 ), Rect2( 48, 16, 16, 16 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "values": [ Rect2( 320, 16, 16, 16 ), Rect2( 336, 16, 16, 16 ), Rect2( 352, 16, 16, 16 ), Rect2( 368, 16, 16, 16 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
@@ -88,10 +88,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ Rect2( 64, 16, 16, 16 ), Rect2( 80, 16, 16, 16 ), Rect2( 96, 16, 16, 16 ), Rect2( 112, 16, 16, 16 ) ]
 }
-
-[sub_resource type="CapsuleShape2D" id=7]
-radius = 12.0
-height = 0.0
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 128.0
@@ -107,22 +103,17 @@ position = Vector2( 0, -12 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 16, 16, 16, 16 )
+region_rect = Rect2( 48, 16, 16, 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CharacterSprite")
-anims/Attack = SubResource( 1 )
-anims/Death = SubResource( 2 )
-anims/Hit = SubResource( 3 )
-anims/Idle = SubResource( 4 )
-anims/Special = SubResource( 5 )
-anims/Walk = SubResource( 6 )
+anims/Attack = SubResource( 9 )
+anims/Death = SubResource( 10 )
+anims/Hit = SubResource( 11 )
+anims/Idle = SubResource( 12 )
+anims/Special = SubResource( 13 )
+anims/Walk = SubResource( 14 )
 script = ExtResource( 2 )
-
-[node name="WalkingCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -6 )
-rotation = 1.5708
-shape = SubResource( 7 )
 
 [node name="AttackRight" type="RayCast2D" parent="."]
 position = Vector2( 0, -6 )
@@ -146,5 +137,6 @@ shape = SubResource( 8 )
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
 [connection signal="body_entered" from="AttackView" to="." method="_on_AttackView_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

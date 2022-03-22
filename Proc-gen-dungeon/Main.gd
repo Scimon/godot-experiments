@@ -22,7 +22,7 @@ func _ready():
 	make_rooms()
 	yield(get_tree().create_timer(1.1), 'timeout')
 	#print(path)
-	#make_map()
+	make_map()
 
 	
 func make_rooms():
